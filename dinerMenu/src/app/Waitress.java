@@ -1,13 +1,13 @@
 package app;
 
+import java.util.Iterator;
 import menus.*;
-import menuIterators.*;
-
+  
 public class Waitress {
-	PancakeHouseMenu pancakeHouseMenu;
-	DinerMenu dinerMenu;
+	Menu pancakeHouseMenu;
+	Menu dinerMenu;
  
-	public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu) {
+	public Waitress(Menu pancakeHouseMenu, Menu dinerMenu) {
 		this.pancakeHouseMenu = pancakeHouseMenu;
 		this.dinerMenu = dinerMenu;
 	}
@@ -32,17 +32,18 @@ public class Waitress {
 	}
  
 	public void printVegetarianMenu() {
+		System.out.println("\nVEGETARIAN MENU\n---------------");
 		printVegetarianMenu(pancakeHouseMenu.createIterator());
 		printVegetarianMenu(dinerMenu.createIterator());
 	}
  
 	public boolean isItemVegetarian(String name) {
-		Iterator breakfastIterator = pancakeHouseMenu.createIterator();
-		if (isVegetarian(name, breakfastIterator)) {
+		Iterator pancakeIterator = pancakeHouseMenu.createIterator();
+		if (isVegetarian(name, pancakeIterator)) {
 			return true;
 		}
-		Iterator dinnerIterator = dinerMenu.createIterator();
-		if (isVegetarian(name, dinnerIterator)) {
+		Iterator dinerIterator = dinerMenu.createIterator();
+		if (isVegetarian(name, dinerIterator)) {
 			return true;
 		}
 		return false;
@@ -53,9 +54,9 @@ public class Waitress {
 		while (iterator.hasNext()) {
 			MenuItem menuItem = (MenuItem)iterator.next();
 			if (menuItem.isVegetarian()) {
-				System.out.print(menuItem.getName());
-				System.out.println("\t\t" + menuItem.getPrice());
-				System.out.println("\t" + menuItem.getDescription());
+				System.out.print(menuItem.getName() + ", ");
+				System.out.print(menuItem.getPrice() + " -- ");
+				System.out.println(menuItem.getDescription());
 			}
 		}
 	}
@@ -72,3 +73,5 @@ public class Waitress {
 		return false;
 	}
 }
+//^^ WaitressCafeMain
+//^^ WaitressCafe
