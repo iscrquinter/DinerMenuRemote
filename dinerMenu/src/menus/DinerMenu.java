@@ -1,6 +1,6 @@
 package menus;
 
-import java.util.Iterator;
+import menuIterators.*;
 
 public class DinerMenu {
 	static final int MAX_ITEMS = 6;
@@ -38,8 +38,9 @@ public class DinerMenu {
 		}
 	}
  
-	public MenuItem[] getMenuItems() {
-		return menuItems;
+	public Iterator createIterator() 
+	{
+		return new DinerMenuIterator(menuItems);
 	}
 
 	// other menu methods here
